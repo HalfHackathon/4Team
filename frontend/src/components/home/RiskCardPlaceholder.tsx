@@ -1,22 +1,26 @@
 interface RiskCardPlaceholderProps {
-  /** 직종 이름. 없으면 빈 카드 */
-  label?: string
-  risks?: string[]
+  /** 첫 줄 인사 (예: "용훈님!") */
+  greeting?: string
+  /** 둘째 줄 직종 리스크 문구. 없으면 빈 카드 */
+  message?: string
 }
 
-/** 직종 리스크 카드 자리. 디자인 확정 전까지 직종 리스크 목록만 표시한다. */
-export default function RiskCardPlaceholder({ label, risks = [] }: RiskCardPlaceholderProps) {
+/** 직종 리스크 카드 (Figma 9:904): 연파랑 카드 + 오른쪽 흐린 일러스트 */
+export default function RiskCardPlaceholder({ greeting, message }: RiskCardPlaceholderProps) {
   return (
-    <div className="min-h-[170px] w-full rounded-[10px] border border-risk-border bg-white p-5">
-      {label && (
-        <>
-          <p className="text-sm font-semibold text-title">{label}</p>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-label">
-            {risks.map((risk) => (
-              <li key={risk}>{risk}</li>
-            ))}
-          </ul>
-        </>
+    <div className="relative h-20 w-full overflow-hidden rounded-[10px] border border-risk-border bg-risk-card">
+      {/* 시안 기준 카드 위에서 3px, 오른쪽으로 8px 넘침. 넘친 부분은 잘린다 */}
+      <img
+        src="/images/risk/wrist.png"
+        alt=""
+        className="pointer-events-none absolute top-[3px] -right-2 h-[92px] w-[122px] -scale-x-100 object-cover opacity-45"
+      />
+      {message && (
+        <p className="relative pt-[19px] pl-[19px] text-sm leading-5 font-bold whitespace-nowrap text-brand">
+          {greeting}
+          <br />
+          {message}
+        </p>
       )}
     </div>
   )

@@ -4,7 +4,7 @@ import { completeMission, getTodayMissions, missionDoneKey } from '../api/missio
 import Banner from '../components/Banner'
 import MissionCarousel from '../components/home/MissionCarousel'
 import RiskCardPlaceholder from '../components/home/RiskCardPlaceholder'
-import { getOccupation } from '../data/mock'
+import { getOccupation, MOCK_USER_NAME } from '../data/mock'
 import { useAppStore } from '../store/useAppStore'
 import type { Mission } from '../types/mission'
 import { toDateKey } from '../utils/date'
@@ -78,9 +78,9 @@ export default function Home() {
         )}
       </section>
 
-      <section className="mt-[45px] space-y-3.5">
-        <h2 className="font-display text-[15px] font-semibold text-black">직종 리스크 카드</h2>
-        <RiskCardPlaceholder label={occupation?.label} risks={occupation?.risks} />
+      <section className="mt-[22px] space-y-3.5">
+        <h2 className="font-display text-[15px] font-semibold text-label">직종 리스크 카드</h2>
+        <RiskCardPlaceholder greeting={`${MOCK_USER_NAME}님!`} message={occupation?.riskMessage} />
       </section>
     </div>
   )

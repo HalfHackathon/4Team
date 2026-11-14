@@ -3,14 +3,13 @@ import ModeBadge from './components/ModeBadge'
 import PhoneFrame from './components/PhoneFrame'
 import RequireOnboarded from './components/RequireOnboarded'
 import TabLayout from './layouts/TabLayout'
-import DietPage from './pages/DietPage'
 import Home from './pages/Home'
 import ItemDetail from './pages/ItemDetail'
 import ItemList from './pages/ItemList'
 import MyPage from './pages/MyPage'
 import NotFoundPage from './pages/NotFoundPage'
 import OnboardingPage from './pages/OnboardingPage'
-import RoutinePage from './pages/RoutinePage'
+import RankingPage from './pages/RankingPage'
 
 const router = createBrowserRouter([
   { path: '/', element: <Navigate to="/home" replace /> },
@@ -24,8 +23,7 @@ const router = createBrowserRouter([
     children: [
       // Figma 시안 홈. 기존 pages/HomePage.jsx(스트릭·직종 리스크)는 통합 논의 전까지 파일만 유지
       { path: '/home', element: <Home /> },
-      { path: '/routine', element: <RoutinePage /> },
-      { path: '/diet', element: <DietPage /> },
+      { path: '/ranking', element: <RankingPage /> },
       { path: '/me', element: <MyPage /> },
     ],
   },

@@ -42,6 +42,9 @@
   --color-dot-inactive: #e6e8f1;
   --color-risk-card: #d3e2ff;
   --color-risk-border: #7da8ff;
+  --color-tab-bar: #ebecf4;
+  --color-tab-active: #373840;
+  --color-tab-inactive: #c6c8d2;
 }
 
 @layer base {

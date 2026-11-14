@@ -7,7 +7,6 @@ import DietPage from './pages/DietPage'
 import Home from './pages/Home'
 import ItemDetail from './pages/ItemDetail'
 import ItemList from './pages/ItemList'
-import MissionVerify from './pages/MissionVerify'
 import MyPage from './pages/MyPage'
 import NotFoundPage from './pages/NotFoundPage'
 import OnboardingPage from './pages/OnboardingPage'
@@ -29,15 +28,6 @@ const router = createBrowserRouter([
       { path: '/diet', element: <DietPage /> },
       { path: '/me', element: <MyPage /> },
     ],
-  },
-  // 미션 인증(사진 업로드) 화면 자리
-  {
-    path: '/missions/:id',
-    element: (
-      <RequireOnboarded>
-        <MissionVerify />
-      </RequireOnboarded>
-    ),
   },
   // 기존 API 샘플 화면 (유지)
   { path: '/items', element: <ItemList /> },

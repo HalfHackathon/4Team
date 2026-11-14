@@ -4,6 +4,9 @@ import MissionCard from './MissionCard'
 
 interface MissionCarouselProps {
   missions: Mission[]
+  onComplete: (mission: Mission) => void
+  /** 완료 요청 중인 미션 id */
+  pendingId?: number | null
 }
 
 /** 이 거리(px) 이상 끌면 다음/이전 카드로 넘긴다. */
@@ -16,7 +19,11 @@ const DRAG_START = 5
  * - 터치·트랙패드: 브라우저 기본 가로 스크롤 + scroll-snap
  * - 마우스: 끌어서 넘기기를 직접 처리 (데스크톱 시연용)
  */
-export default function MissionCarousel({ missions }: MissionCarouselProps) {
+export default function MissionCarousel({
+  missions,
+  onComplete,
+  pendingId = null,
+}: MissionCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const dragRef = useRef<{ startX: number; startIndex: number; moved: boolean } | null>(null)
   const suppressClickRef = useRef(false)
@@ -96,7 +103,11 @@ export default function MissionCarousel({ missions }: MissionCarouselProps) {
       >
         {missions.map((mission) => (
           <div key={mission.id} className="w-full shrink-0 snap-center">
-            <MissionCard mission={mission} />
+            <MissionCard
+              mission={mission}
+              onComplete={onComplete}
+              pending={pendingId === mission.id}
+            />
           </div>
         ))}
       </div>

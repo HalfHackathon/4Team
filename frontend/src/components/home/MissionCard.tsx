@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom'
 import type { Mission } from '../../types/mission'
 
 interface MissionCardProps {
   mission: Mission
+  /** 인증 버튼을 누르면 호출. 누르는 즉시 완료 처리한다. */
+  onComplete: (mission: Mission) => void
+  /** 완료 요청 중이면 버튼을 잠근다. */
+  pending?: boolean
 }
 
 /** 오늘의 미션 카드 한 장: 제목, 일러스트, 인증 버튼 */
-export default function MissionCard({ mission }: MissionCardProps) {
+export default function MissionCard({ mission, onComplete, pending = false }: MissionCardProps) {
   const completed = mission.status === 'COMPLETED'
 
   return (
@@ -24,12 +27,14 @@ export default function MissionCard({ mission }: MissionCardProps) {
           인증 완료
         </span>
       ) : (
-        <Link
-          to={`/missions/${mission.id}`}
-          className="absolute inset-x-[23px] bottom-6 flex h-11 items-center justify-center rounded-lg bg-gray-800 text-sm font-semibold text-white active:opacity-90"
+        <button
+          type="button"
+          onClick={() => onComplete(mission)}
+          disabled={pending}
+          className="absolute inset-x-[23px] bottom-6 flex h-11 items-center justify-center rounded-lg bg-gray-800 text-sm font-semibold text-white active:opacity-90 disabled:opacity-60"
         >
-          미션 인증하러 가기
-        </Link>
+          {pending ? '처리 중…' : '미션 인증하러 가기'}
+        </button>
       )}
     </article>
   )

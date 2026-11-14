@@ -26,7 +26,7 @@ export default function ItemList() {
   }, [])
 
   return (
-    <section className="space-y-3">
+    <section className="space-y-3 p-4">
       <h2 className="text-lg font-bold">목록</h2>
       {error && <Banner message={error} />}
       {!error && items === null && <p className="text-sm text-gray-500">불러오는 중…</p>}

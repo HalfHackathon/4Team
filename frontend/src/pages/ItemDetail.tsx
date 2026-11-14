@@ -30,8 +30,8 @@ export default function ItemDetail() {
   }, [itemId])
 
   return (
-    <section className="space-y-3">
-      <Link to="/" className="text-sm text-blue-600">
+    <section className="space-y-3 p-4">
+      <Link to="/items" className="text-sm text-blue-600">
         ← 목록으로
       </Link>
       {error && <Banner message={error} />}

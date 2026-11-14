@@ -19,13 +19,13 @@ const SEED: Mission[] = [
   },
   {
     id: 2,
-    title: '점심 후 10분 걷기',
-    description: '점심 식사 후 10분 동안 가볍게 걸어 보세요.',
-    reason: '오후 졸음과 허리 긴장을 줄이는 데 도움이 돼요.',
+    title: '근력 한 세트 하기',
+    description: '스쿼트 15회나 팔굽혀펴기 10회를 한 세트 해 보세요.',
+    reason: '오래 앉아 있으면 하체와 코어 근력이 약해지기 쉬워요.',
     status: 'ASSIGNED',
     assignedAt: '2026-11-14T08:00:00+09:00',
     completedAt: null,
-    imageUrl: null,
+    imageUrl: '/images/missions/strength.png',
   },
 ]
 

@@ -19,6 +19,22 @@ cd frontend && npm install && npm run dev
 | `MOCK`               | 목데이터 고정 (`?mock=1` 또는 `VITE_USE_MOCK=true`)   |
 | `MOCK·백엔드 미연결` | 자동 모드에서 백엔드 헬스 체크 실패 → 목데이터로 전환 |
 
+## 기술 스택
+
+| 구분        | 사용 기술                                                     |
+| ----------- | ------------------------------------------------------------- |
+| 런타임      | Node 24 LTS (`.nvmrc`, `engines.node`)                        |
+| 빌드        | Vite 8                                                        |
+| UI          | React 19, TypeScript 7                                        |
+| 라우팅      | react-router-dom 7                                            |
+| 스타일      | Tailwind CSS v4 (`@tailwindcss/vite`, 외부 CDN 없음)          |
+| 린트        | oxlint (`.oxlintrc.json`, style 규칙 끔)                      |
+| 포맷        | Prettier 3 + prettier-plugin-tailwindcss (`.prettierrc.json`) |
+| 백엔드 연결 | Vite 프록시 `/api` → `VITE_BACKEND_URL` (dev·preview 공통)    |
+| 목데이터    | `src/mocks/` + 모드 자동 전환 (아래 참고)                     |
+
+정확한 버전은 `package.json`과 `package-lock.json`을 따른다.
+
 ## 모드 전환
 
 우선순위 순서:

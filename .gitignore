@@ -1,0 +1,21 @@
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Gradle / Java
+**/.gradle/
+**/.gradle-user-home/
+**/build/
+*.class
+
+# Local settings and data
+.env
+.env.*
+!.env.example
+**/application-local.yml
+**/uploads/*
+!**/uploads/.gitkeep
+*.log
+.DS_Store
+Thumbs.db

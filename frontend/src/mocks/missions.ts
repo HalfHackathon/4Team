@@ -15,6 +15,7 @@ const SEED: Mission[] = [
     status: 'ASSIGNED',
     assignedAt: '2026-11-14T08:00:00+09:00',
     completedAt: null,
+    imageUrl: '/images/missions/salad.png',
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ const SEED: Mission[] = [
     status: 'ASSIGNED',
     assignedAt: '2026-11-14T08:00:00+09:00',
     completedAt: null,
+    imageUrl: null,
   },
 ]
 

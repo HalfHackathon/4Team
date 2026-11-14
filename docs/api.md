@@ -147,6 +147,7 @@
 
 - 사용자 식별 방식(로그인 / 데모 사용자 고정) BE 확인 필요.
 - `status`: `ASSIGNED`(받음) | `COMPLETED`(완료). 그 외 상태 BE 확인 필요.
+- `imageUrl`: 미션 일러스트 경로, 없으면 `null`. BE가 경로를 줄지, FE가 미션 종류별 이미지를 둘지 BE 확인 필요.
 
 성공 예시 (HTTP 200) — `code` BE 확인 필요
 
@@ -163,7 +164,8 @@
       "reason": "앉아서 일하는 시간이 길면 식후 혈당이 빠르게 오를 수 있어요.",
       "status": "ASSIGNED",
       "assignedAt": "2026-11-14T08:00:00+09:00",
-      "completedAt": null
+      "completedAt": null,
+      "imageUrl": "/images/missions/salad.png"
     },
     {
       "id": 2,
@@ -172,7 +174,8 @@
       "reason": "오후 졸음과 허리 긴장을 줄이는 데 도움이 돼요.",
       "status": "ASSIGNED",
       "assignedAt": "2026-11-14T08:00:00+09:00",
-      "completedAt": null
+      "completedAt": null,
+      "imageUrl": null
     }
   ]
 }
@@ -213,7 +216,8 @@
     "reason": "앉아서 일하는 시간이 길면 식후 혈당이 빠르게 오를 수 있어요.",
     "status": "COMPLETED",
     "assignedAt": "2026-11-14T08:00:00+09:00",
-    "completedAt": "2026-11-14T12:40:00+09:00"
+    "completedAt": "2026-11-14T12:40:00+09:00",
+    "imageUrl": "/images/missions/salad.png"
   }
 }
 ```

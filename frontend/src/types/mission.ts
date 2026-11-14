@@ -13,4 +13,6 @@ export interface Mission {
   assignedAt: string
   /** ISO 8601, 완료 전에는 null */
   completedAt: string | null
+  /** 미션 일러스트 경로. 없으면 null (BE 확인 필요) */
+  imageUrl: string | null
 }

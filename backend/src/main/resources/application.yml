@@ -2,7 +2,9 @@ spring:
   application:
     name: fourteam-backend
   config:
-    import: optional:file:./application-local.yml
+    import:
+      - "optional:file:./.env[.properties]"
+      - "optional:file:./application-local.yml"
   datasource:
     url: ${DB_URL:jdbc:mysql://localhost:3306/fourteam?serverTimezone=Asia/Seoul&characterEncoding=UTF-8}
     username: ${DB_USERNAME:fourteam}

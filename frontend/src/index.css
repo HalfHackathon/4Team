@@ -40,7 +40,8 @@
   --color-mission-card: #e6efff;
   --color-dot-active: #bbd1ff;
   --color-dot-inactive: #e6e8f1;
-  --color-risk-border: #d3e2ff;
+  --color-risk-card: #d3e2ff;
+  --color-risk-border: #7da8ff;
 }
 
 @layer base {

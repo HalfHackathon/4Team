@@ -2,6 +2,10 @@
 .idea/
 *.iml
 .vscode/
+!frontend/.vscode/
+
+# Claude Code
+.claude/
 
 # Gradle / Java
 **/.gradle/

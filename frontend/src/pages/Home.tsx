@@ -26,25 +26,25 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="space-y-10 px-6 pt-6 pb-10">
-      <h1 className="text-2xl font-bold text-brand">직장체질</h1>
+    <div className="px-[22px] pt-[22px] pb-10">
+      <h1 className="font-display text-2xl font-semibold text-brand">직장체질</h1>
 
-      <section className="space-y-4">
-        <h2 className="text-base font-semibold text-gray-900">오늘의 미션</h2>
+      <section className="mt-8 space-y-3.5">
+        <h2 className="font-display text-[15px] font-semibold text-label">오늘의 미션</h2>
         {error && <Banner message={error} />}
         {!error && missions === null && (
-          <div className="aspect-[358/310] w-full animate-pulse rounded-2xl bg-mission-card" />
+          <div className="h-[310px] w-full animate-pulse rounded-[10px] bg-mission-card" />
         )}
         {missions?.length === 0 && (
-          <p className="rounded-2xl bg-mission-card px-6 py-10 text-center text-sm text-gray-500">
+          <p className="rounded-[10px] bg-mission-card px-6 py-10 text-center text-sm text-label">
             오늘 받은 미션이 없어요.
           </p>
         )}
         {missions && missions.length > 0 && <MissionCarousel missions={missions} />}
       </section>
 
-      <section className="space-y-4">
-        <h2 className="text-base font-semibold text-gray-900">직종 리스크 카드</h2>
+      <section className="mt-[45px] space-y-3.5">
+        <h2 className="font-display text-[15px] font-semibold text-black">직종 리스크 카드</h2>
         <RiskCardPlaceholder />
       </section>
     </div>

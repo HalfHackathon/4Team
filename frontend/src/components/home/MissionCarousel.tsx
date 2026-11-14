@@ -37,7 +37,7 @@ export default function MissionCarousel({ missions }: MissionCarouselProps) {
       </div>
 
       {missions.length > 1 && (
-        <div className="mt-4 flex justify-center gap-1.5" role="tablist" aria-label="미션 페이지">
+        <div className="mt-3.5 flex justify-center gap-1" role="tablist" aria-label="미션 페이지">
           {missions.map((mission, index) => (
             <button
               key={mission.id}
@@ -47,7 +47,7 @@ export default function MissionCarousel({ missions }: MissionCarouselProps) {
               aria-label={`${index + 1}번째 미션`}
               onClick={() => scrollTo(index)}
               className={`h-2 rounded-full transition-all ${
-                index === activeIndex ? 'w-12 bg-mission-dot' : 'w-2 bg-gray-200'
+                index === activeIndex ? 'w-[37px] bg-dot-active' : 'w-2 bg-dot-inactive'
               }`}
             />
           ))}

@@ -3,6 +3,7 @@ import ModeBadge from './components/ModeBadge'
 import Home from './pages/Home'
 import ItemDetail from './pages/ItemDetail'
 import ItemList from './pages/ItemList'
+import MissionVerify from './pages/MissionVerify'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <main className="mx-auto max-w-md">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/missions/:id" element={<MissionVerify />} />
             {/* 샘플: 화면 → api → 목데이터 경로 참고용 */}
             <Route path="/items" element={<ItemList />} />
             <Route path="/items/:id" element={<ItemDetail />} />

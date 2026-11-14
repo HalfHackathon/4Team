@@ -1,15 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { toErrorMessage } from '../api/client'
 import { completeMission, getTodayMissions, missionDoneKey } from '../api/missions'
 import Banner from '../components/Banner'
 import MissionCarousel from '../components/home/MissionCarousel'
+import MissionCompleteOverlay from '../components/home/MissionCompleteOverlay'
 import RiskCardPlaceholder from '../components/home/RiskCardPlaceholder'
 import { getOccupation, MOCK_USER_NAME } from '../data/mock'
 import { useAppStore } from '../store/useAppStore'
 import type { Mission } from '../types/mission'
-import { toDateKey } from '../utils/date'
-
-const EMPTY: string[] = []
 
 /** 홈: 오늘의 미션(가로 스와이프) + 직종 리스크 카드 */
 export default function Home() {
@@ -17,18 +15,22 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null)
   const [completeError, setCompleteError] = useState<string | null>(null)
   const [pendingId, setPendingId] = useState<number | null>(null)
+  const [showCompleted, setShowCompleted] = useState(false)
+  const closeCompleted = useCallback(() => setShowCompleted(false), [])
   const occupationId = useAppStore((s) => s.profile?.occupationId)
-  const doneToday = useAppStore((s) => s.done[toDateKey()] ?? EMPTY)
   const complete = useAppStore((s) => s.complete)
   const occupation = getOccupation(occupationId)
 
   // 인증 버튼을 누르면 바로 완료 처리하고, 스트릭 기록(localStorage)에도 남긴다.
+  // 카드 완료 상태는 화면에만 반영하므로 새로고침하면 다시 누를 수 있다 (시연용).
   const handleComplete = async (mission: Mission) => {
     setPendingId(mission.id)
     setCompleteError(null)
     try {
-      await completeMission(mission.id)
+      const updated = await completeMission(mission.id)
+      setFetched((prev) => prev?.map((m) => (m.id === updated.id ? updated : m)) ?? prev)
       complete(missionDoneKey(mission.id))
+      setShowCompleted(true)
     } catch (e: unknown) {
       setCompleteError(toErrorMessage(e))
     } finally {
@@ -36,11 +38,7 @@ export default function Home() {
     }
   }
 
-  // 목 데이터는 새로고침하면 초기화되므로, 오늘 완료 기록(localStorage)으로 완료 상태를 덮어쓴다.
-  const missions =
-    fetched?.map((m) =>
-      doneToday.includes(missionDoneKey(m.id)) ? { ...m, status: 'COMPLETED' as const } : m,
-    ) ?? null
+  const missions = fetched
 
   useEffect(() => {
     let ignore = false
@@ -82,6 +80,8 @@ export default function Home() {
         <h2 className="font-display text-[15px] font-semibold text-label">직종 리스크 카드</h2>
         <RiskCardPlaceholder greeting={`${MOCK_USER_NAME}님!`} message={occupation?.riskMessage} />
       </section>
+
+      {showCompleted && <MissionCompleteOverlay onClose={closeCompleted} />}
     </div>
   )
 }

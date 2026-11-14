@@ -1,1 +1,59 @@
 @import 'tailwindcss';
+
+/*
+ * 디자인 토큰 (Figma "11.14 해커톤" 홈 시안 기준)
+ *
+ * 글꼴: SUIT(본문), 머니그라피 Rounded(로고·섹션 제목).
+ * 오프라인 시연을 위해 CDN을 쓰지 않는다. 글꼴 파일을 받으면 public/fonts/에 woff2로 넣고
+ * 아래 @font-face 주석을 해제한다. 파일이 없으면 Pretendard → 시스템 글꼴로 표시된다.
+ */
+/*
+@font-face {
+  font-family: 'SUIT';
+  font-weight: 600;
+  src: url('/fonts/SUIT-SemiBold.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SUIT';
+  font-weight: 700;
+  src: url('/fonts/SUIT-Bold.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Moneygraphy Rounded';
+  font-weight: 400 700;
+  src: url('/fonts/Moneygraphy-Rounded.woff2') format('woff2');
+  font-display: swap;
+}
+*/
+
+@theme {
+  --font-sans: 'SUIT', 'Pretendard', system-ui, sans-serif;
+  --font-display: 'Moneygraphy Rounded', '머니그라피 Rounded', 'Pretendard', system-ui, sans-serif;
+
+  --color-brand: #3276fe;
+  --color-surface: #f8f9fd;
+  --color-title: #1d1e23;
+  --color-label: #373840;
+  --color-gray-800: #242327;
+  --color-mission-card: #e6efff;
+  --color-dot-active: #bbd1ff;
+  --color-dot-inactive: #e6e8f1;
+  --color-risk-border: #d3e2ff;
+}
+
+@layer base {
+  /* 시안의 모든 글자 자간 -2% */
+  body {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* 가로 스크롤 영역의 스크롤바 숨김 */
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

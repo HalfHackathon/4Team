@@ -26,7 +26,8 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="px-[22px] pt-[22px] pb-10">
+    // -m-4: TabLayout main의 padding(16px) 상쇄. 레이아웃 정리 시 제거
+    <div className="-mx-4 -mt-4 px-[22px] pt-[22px] pb-10">
       <h1 className="font-display text-2xl font-semibold text-brand">직장체질</h1>
 
       <section className="mt-8 space-y-3.5">

@@ -62,7 +62,15 @@ IDE에서는 `backend/`를 Gradle 프로젝트로 열고, 작업 디렉터리를
 | `SERVER_PORT` | `8080` | API 서버 포트 |
 | `UPLOAD_DIR` | `./uploads` | 업로드 저장 경로 |
 
-`application-local.yml` 대신 환경 변수를 사용할 수도 있습니다. `.env` 파일을 자동으로 읽지는 않습니다.
+`backend/.env` 파일에 환경 변수를 작성하면 애플리케이션 실행 시 자동으로 읽습니다.
+루트 계정으로 로컬 DB에 접속하는 경우 다음 형식으로 작성합니다.
+
+```dotenv
+DB_USERNAME=root
+DB_PASSWORD=replace-with-local-password
+```
+
+운영체제 환경 변수나 `application-local.yml`을 대신 사용할 수도 있습니다.
 업로드 경로는 설정만 준비되어 있으며, 파일 업로드 API는 기능 개발 시 구현합니다. 업로드 파일은 Git에 포함하지 않습니다.
 
 ## 빌드 및 검증
